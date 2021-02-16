@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        minimum: EdgeInsets.all(kSafePadding),
+        minimum: EdgeInsets.all(dSafePadding),
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 60,
               width: 60,
             ),
-            SizedBox(height: kSafePadding),
+            SizedBox(height: dSafePadding),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -35,19 +35,19 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     'Disebud',
                     style: GoogleFonts.poppins(
-                        color: kBlack,
+                        color: dBlack,
                         fontSize: 40.0,
                         fontWeight: FontWeight.w800),
                   ),
                   Text('Stay',
                       style: GoogleFonts.poppins(
-                          color: kOrange,
+                          color: dOrange,
                           fontSize: 40.0,
                           fontWeight: FontWeight.w800))
                 ],
               ),
             ),
-            SizedBox(height: 2 * kSafePadding),
+            SizedBox(height: 2 * dSafePadding),
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,15 +56,15 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(left: 5.0),
                     child: Text('Siapa Nama Anda?',
                         style: GoogleFonts.poppins(
-                            color: kBlack, fontWeight: FontWeight.bold)),
+                            color: dBlack, fontWeight: FontWeight.bold)),
                   ),
-                  SizedBox(height: 2 * kBasePadding),
+                  SizedBox(height: 2 * dBasePadding),
                   Container(
-                    height: 12 * kBasePadding,
-                    padding: EdgeInsets.symmetric(horizontal: kSafePadding),
+                    height: 12 * dBasePadding,
+                    padding: EdgeInsets.symmetric(horizontal: dSafePadding),
                     decoration: BoxDecoration(
-                        color: kWhite,
-                        border: Border.all(color: kLightGrey),
+                        color: dWhite,
+                        border: Border.all(color: dLightOrange),
                         borderRadius: BorderRadius.circular(8.0)),
                     child: TextField(
                       controller: textController,
@@ -76,31 +76,34 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            SizedBox(height: 2 * kSafePadding),
-            FlatButton(
-                color: kOrange,
-                onPressed: () {
-                  setState(() {
-                    displayName = textController.text;
-                  });
+            SizedBox(height: 2 * dSafePadding),
+            Padding(
+              padding: const EdgeInsets.only(left: 220.0),
+              child: FlatButton(
+                  color: dOrange,
+                  onPressed: () {
+                    setState(() {
+                      displayName = textController.text;
+                    });
 
-                  if (displayName != '') {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return HomePage(displayName: displayName);
-                    }));
-                  } else {
-                    return null;
-                  }
-                },
-                child: Text(
-                  'NEXT',
-                  style: GoogleFonts.lato(
-                      color: kWhite, fontWeight: FontWeight.w500),
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    side: BorderSide(color: Colors.red)))
+                    if (displayName != '') {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return HomePage(displayName: displayName);
+                      }));
+                    } else {
+                      return null;
+                    }
+                  },
+                  child: Text(
+                    'NEXT',
+                    style: GoogleFonts.lato(
+                        color: dWhite, fontWeight: FontWeight.w500),
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      side: BorderSide(color: Colors.red))),
+            )
           ],
         )),
       ),

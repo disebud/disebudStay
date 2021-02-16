@@ -1,224 +1,242 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:submission_1_disebud/model/KostStay.dart';
 import 'package:submission_1_disebud/util/themes.dart';
 
 class KostStayDetail extends StatelessWidget {
-  final KostStay kost;
+  final String name;
+  final String location;
+  final String price;
+  final String description;
+  final String capacity;
+  final String available;
+  final String facilitas;
+  final String mainImage;
+  final List<String> listImage;
 
-  KostStayDetail({@required this.kost});
+  KostStayDetail(
+      {this.name,
+      this.location,
+      this.price,
+      this.description,
+      this.capacity,
+      this.available,
+      this.facilitas,
+      this.mainImage,
+      this.listImage});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: kLightGrey,
+          backgroundColor: dLightOrange,
           elevation: 0,
           leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: kOrange),
+              icon: Icon(Icons.arrow_back, color: dOrange),
               onPressed: () {
                 Navigator.pop(context);
               }),
           centerTitle: true,
-          title: Text(kost.location,
+          title: Text(location,
               style: GoogleFonts.poppins(
-                  color: kBlack, fontSize: 16.0, fontWeight: FontWeight.w600)),
+                  color: dBlack, fontSize: 16.0, fontWeight: FontWeight.w600)),
         ),
         body: SingleChildScrollView(
-          // child: SafeArea(
-          //   minimum: EdgeInsets.all(kSafePadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Image.asset('assets/$kost.mainImage'),
-              Container(
-                padding: EdgeInsets.only(top: kSafePadding),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/$kost.mainImage',
-                      scale: 1.5,
-                    ),
-                    SizedBox(width: kSafePadding),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(kost.name,
-                            style: GoogleFonts.lato(
-                                color: kBlack,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.w700)),
-                        // Text(
-                        //   companyName,
-                        //   style: GoogleFonts.lato(
-                        //       color: kDarkGrey,
-                        //       fontSize: 18.0,
-                        //       fontWeight: FontWeight.w700),
-                        // ),
-                        Text(kost.location,
-                            style: GoogleFonts.lato(
-                                color: kDarkGrey, fontSize: 16.0)),
-                        Text(kost.price,
-                            style: GoogleFonts.lato(
-                                color: kDarkGrey,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w600))
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 1.5 * kSafePadding),
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text('Description',
-                        style: GoogleFonts.poppins(
-                            color: kBlack,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w700)),
-                    SizedBox(height: kBasePadding),
-                    Text(
-                      kost.description,
-                      textAlign: TextAlign.justify,
-                      style: GoogleFonts.lato(color: kBlack, fontSize: 16.0),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 1.5 * kSafePadding),
-              Container(
-                height: 150,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: kost.listImage.map((url) {
-                    return Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: ClipRRect(
+          child: SafeArea(
+            minimum: EdgeInsets.all(dSafePadding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Image.asset('assets/$mainImage'),
+                Container(
+                  padding: EdgeInsets.only(top: dSafePadding),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.network(url),
+                        child: Image.asset(
+                          'assets/$mainImage',
+                          scale: 1.5,
+                          height: 70,
+                        ),
                       ),
-                    );
-                  }).toList(),
+                      SizedBox(width: dSafePadding),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(name,
+                              style: GoogleFonts.lato(
+                                  color: dBlack,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w700)),
+                          Text(location,
+                              style: GoogleFonts.lato(
+                                  color: dDarkGrey, fontSize: 16.0)),
+                          Text(price,
+                              style: GoogleFonts.lato(
+                                  color: dDarkGrey,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600))
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 1.5 * kSafePadding),
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text('More',
-                        style: GoogleFonts.poppins(
-                            color: kBlack,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w700)),
-                    SizedBox(height: kBasePadding),
-                    // Text('•\tMin level of education: B.Sc. in CSE',
-                    //     style: GoogleFonts.lato(color: kBlack, fontSize: 16.0)),
-                    // Text('•\tExpert in Laravel framework',
-                    //     style: GoogleFonts.lato(color: kBlack, fontSize: 16.0)),
-                    // Text('•\tFluent in English language',
-                    //     style: GoogleFonts.lato(color: kBlack, fontSize: 16.0)),
-                  ],
+                SizedBox(height: 1.5 * dSafePadding),
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text('Description',
+                          style: GoogleFonts.poppins(
+                              color: dBlack,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w700)),
+                      SizedBox(height: dBasePadding),
+                      Text(
+                        description,
+                        textAlign: TextAlign.justify,
+                        style: GoogleFonts.lato(color: dBlack, fontSize: 16.0),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 1.5 * kSafePadding),
-              Container(
-                padding: EdgeInsets.all(2 * kSafePadding),
-                decoration: BoxDecoration(
-                    color: kLightGrey,
-                    borderRadius: BorderRadius.circular(8.0)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.people_outline,
-                          color: kOrange,
-                          size: 28.0,
+                SizedBox(height: 1.5 * dSafePadding),
+                Container(
+                  height: 150,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: listImage.map((url) {
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset('assets/$url'),
                         ),
-                        SizedBox(width: 1.5 * kSafePadding),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Kapasitas',
-                                style: GoogleFonts.lato(
-                                    color: kBlack,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w500)),
-                            SizedBox(height: kBasePadding),
-                            Text(kost.capacity,
-                                style: GoogleFonts.lato(
-                                    color: kBlack,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w700))
-                          ],
-                        )
-                      ],
+                      );
+                    }).toList(),
+                  ),
+                ),
+                SizedBox(height: 1.5 * dSafePadding),
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text('Lainnya ',
+                          style: GoogleFonts.poppins(
+                              color: dBlack,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w700)),
+                      SizedBox(height: dBasePadding),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 0.5 * dSafePadding),
+                Container(
+                  padding: EdgeInsets.all(2 * dSafePadding),
+                  decoration: BoxDecoration(
+                      color: dLightOrange,
+                      borderRadius: BorderRadius.circular(8.0)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.people_outline,
+                            color: dOrange,
+                            size: 28.0,
+                          ),
+                          SizedBox(width: 1.5 * dSafePadding),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Kapasitas',
+                                  style: GoogleFonts.lato(
+                                      color: dBlack,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w500)),
+                              SizedBox(height: dBasePadding),
+                              Text(capacity,
+                                  style: GoogleFonts.lato(
+                                      color: dBlack,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w700))
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(height: dSafePadding),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_today,
+                            color: dOrange,
+                            size: 28.0,
+                          ),
+                          SizedBox(width: 1.5 * dSafePadding),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Ketersedian',
+                                  style: GoogleFonts.lato(
+                                      color: dBlack,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w500)),
+                              SizedBox(height: dBasePadding),
+                              Text(available,
+                                  style: GoogleFonts.lato(
+                                      color: dBlack,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w700))
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(height: dSafePadding),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.picture_in_picture_alt,
+                            color: dOrange,
+                            size: 28.0,
+                          ),
+                          SizedBox(width: 1.5 * dSafePadding),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Fasilitas',
+                                  style: GoogleFonts.lato(
+                                      color: dBlack,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w500)),
+                              SizedBox(height: dBasePadding),
+                              Text(facilitas,
+                                  style: GoogleFonts.lato(
+                                      color: dBlack,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w700))
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                FlatButton(
+                    color: dOrange,
+                    onPressed: () {},
+                    child: Text(
+                      'PESAN',
+                      style: GoogleFonts.lato(
+                          color: dWhite, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: kSafePadding),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_today,
-                          color: kOrange,
-                          size: 28.0,
-                        ),
-                        SizedBox(width: 1.5 * kSafePadding),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Ketersedian',
-                                style: GoogleFonts.lato(
-                                    color: kBlack,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w500)),
-                            SizedBox(height: kBasePadding),
-                            Text(kost.available,
-                                style: GoogleFonts.lato(
-                                    color: kBlack,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w700))
-                          ],
-                        )
-                      ],
-                    ),
-                    SizedBox(height: kSafePadding),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.picture_in_picture_alt,
-                          color: kOrange,
-                          size: 28.0,
-                        ),
-                        SizedBox(width: 1.5 * kSafePadding),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Fasilitas',
-                                style: GoogleFonts.lato(
-                                    color: kBlack,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w500)),
-                            SizedBox(height: kBasePadding),
-                            Text(kost.facilitas,
-                                style: GoogleFonts.lato(
-                                    color: kBlack,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w700))
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        side: BorderSide(color: Colors.red)))
+              ],
+            ),
           ),
-          // ),
         ));
   }
 }

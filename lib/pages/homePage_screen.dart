@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kLightGrey,
+        backgroundColor: dLightOrange,
         elevation: 0,
         automaticallyImplyLeading: false,
         centerTitle: true,
@@ -27,18 +27,18 @@ class _HomePageState extends State<HomePage> {
             text: TextSpan(
                 text: 'Disebud',
                 style: GoogleFonts.poppins(
-                    color: kBlack, fontSize: 20.0, fontWeight: FontWeight.w800),
+                    color: dBlack, fontSize: 20.0, fontWeight: FontWeight.w800),
                 children: <TextSpan>[
               TextSpan(
                   text: 'Stay',
                   style: GoogleFonts.poppins(
-                      color: kOrange, fontWeight: FontWeight.w800))
+                      color: dOrange, fontWeight: FontWeight.w800))
             ])),
         actions: [
           IconButton(
               icon: Icon(
                 Icons.exit_to_app,
-                color: kDarkGrey,
+                color: dOrange,
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               padding: EdgeInsets.fromLTRB(
-                  kSafePadding, 2 * kSafePadding, kSafePadding, 0),
+                  dSafePadding, 2 * dSafePadding, dSafePadding, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -59,51 +59,43 @@ class _HomePageState extends State<HomePage> {
                       text: TextSpan(
                           text: 'Hello, ',
                           style: GoogleFonts.poppins(
-                              color: kDarkGrey,
+                              color: dDarkGrey,
                               fontSize: 16.0,
                               fontWeight: FontWeight.w500),
                           children: <TextSpan>[
                         TextSpan(
-                            text: '${widget.displayName}',
+                            text: widget.displayName,
                             style: GoogleFonts.poppins(
-                                color: kOrange, fontWeight: FontWeight.w500))
+                                color: dOrange,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w500))
                       ])),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30.0),
-                    child: SizedBox(
-                      height: 3.0,
-                      width: 200.0,
-                      child: const DecoratedBox(
-                        decoration: const BoxDecoration(color: kOrange),
-                      ),
-                    ),
-                  ),
                   Text(
                     'EXPLORE NOW ',
                     style: GoogleFonts.poppins(
-                        color: kBlack,
+                        color: dBlack,
                         fontSize: 30.0,
                         fontWeight: FontWeight.w800),
                   ),
                   Text('Mencari Kosan yang Nyaman ',
                       style: GoogleFonts.poppins(
-                          color: kDarkGrey,
+                          color: dDarkGrey,
                           fontSize: 14.0,
                           fontWeight: FontWeight.w500))
                 ],
               ),
             ),
-            SizedBox(height: 1.5 * kSafePadding),
+            SizedBox(height: 1.5 * dSafePadding),
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: kSafePadding),
+                    padding: EdgeInsets.symmetric(horizontal: dSafePadding),
                     child: Text(
                       'Popular City KostStay',
                       style: GoogleFonts.poppins(
-                          color: kBlack,
+                          color: dBlack,
                           fontSize: 20.0,
                           fontWeight: FontWeight.w600),
                     ),
@@ -115,13 +107,13 @@ class _HomePageState extends State<HomePage> {
                       height: 3.0,
                       width: 20.0,
                       child: const DecoratedBox(
-                        decoration: const BoxDecoration(color: kOrange),
+                        decoration: const BoxDecoration(color: dOrange),
                       ),
                     ),
                   ),
-                  SizedBox(height: 2 * kBasePadding),
+                  SizedBox(height: 2 * dBasePadding),
                   Container(
-                    height: 12 * kSafePadding,
+                    height: 12 * dSafePadding,
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -129,39 +121,42 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           child: Container(
-                            width: 10 * kSafePadding,
+                            width: 10 * dSafePadding,
                             margin: index != popularCity.length - 1
-                                ? EdgeInsets.only(left: kSafePadding)
+                                ? EdgeInsets.only(left: dSafePadding)
                                 : EdgeInsets.symmetric(
-                                    horizontal: kSafePadding),
+                                    horizontal: dSafePadding),
                             padding: EdgeInsets.symmetric(
-                                vertical: kSafePadding,
-                                horizontal: 2 * kBasePadding),
+                                vertical: dSafePadding,
+                                horizontal: 2 * dBasePadding),
                             decoration: BoxDecoration(
-                                border: Border.all(color: kLightGrey)),
+                                border: Border.all(color: dLightOrange)),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image.asset(
-                                  'assets/${popularCity[index].cityImage}',
-                                  scale: 2.0,
-                                  height: 100,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    'assets/${popularCity[index].cityImage}',
+                                    scale: 1.0,
+                                    height: 80,
+                                  ),
                                 ),
-                                SizedBox(height: kSafePadding),
+                                SizedBox(height: dSafePadding),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(popularCity[index].nameCity,
                                         style: GoogleFonts.lato(
-                                            color: kBlack,
+                                            color: dBlack,
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w700)),
                                     SizedBox(height: 2.0),
                                     Text(popularCity[index].hargaKisaran,
                                         style: GoogleFonts.lato(
-                                            color: kDarkGrey,
+                                            color: dDarkGrey,
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w700)),
                                   ],
@@ -176,16 +171,16 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            SizedBox(height: 1.5 * kSafePadding),
+            SizedBox(height: 1.5 * dSafePadding),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: kSafePadding),
+              padding: EdgeInsets.symmetric(horizontal: dSafePadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Recent KostStay',
                     style: GoogleFonts.poppins(
-                        color: kBlack,
+                        color: dBlack,
                         fontSize: 20.0,
                         fontWeight: FontWeight.w600),
                   ),
@@ -196,91 +191,95 @@ class _HomePageState extends State<HomePage> {
                       height: 3.0,
                       width: 200.0,
                       child: const DecoratedBox(
-                        decoration: const BoxDecoration(color: kOrange),
+                        decoration: const BoxDecoration(color: dOrange),
                       ),
                     ),
                   ),
-                  SizedBox(height: 2 * kBasePadding),
-                  ListView(
-                      shrinkWrap: true,
-                      children: recentKostStay.map((kost) {
-                        return FlatButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return KostStayDetail(
-                                kost: kost,
-                              );
-                            }));
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(bottom: kSafePadding),
-                            padding: EdgeInsets.all(kSafePadding),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: kLightGrey)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Expanded(
-                                  flex: 3,
-                                  child: Container(
-                                    child: Row(
+                  SizedBox(height: 2 * dBasePadding),
+                  ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: recentKostStay.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return KostStayDetail(
+                              name: recentKostStay[index].name,
+                              location: recentKostStay[index].location,
+                              price: recentKostStay[index].price,
+                              description: recentKostStay[index].description,
+                              capacity: recentKostStay[index].capacity,
+                              available: recentKostStay[index].available,
+                              facilitas: recentKostStay[index].facilitas,
+                              mainImage: recentKostStay[index].mainImage,
+                              listImage: recentKostStay[index].listImage,
+                            );
+                          }));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: dSafePadding),
+                          padding: EdgeInsets.all(dSafePadding),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: dLightOrange)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.asset(
+                                        'assets/${recentKostStay[index].mainImage}',
+                                        height: 70,
+                                        scale: 2.0,
+                                      ),
+                                    ),
+                                    SizedBox(width: dSafePadding),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Image.asset(
-                                          'assets/${kost.mainImage}',
-                                          scale: 2.0,
-                                          width: 50,
-                                          height: 50,
-                                        ),
-                                        SizedBox(width: kSafePadding),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(kost.name,
-                                                style: GoogleFonts.lato(
-                                                    color: kBlack,
-                                                    fontSize: 16.0,
-                                                    fontWeight:
-                                                        FontWeight.w700)),
-                                            SizedBox(height: 2.0),
-                                            Text(kost.location,
-                                                style: GoogleFonts.lato(
-                                                    color: kDarkGrey,
-                                                    fontSize: 16.0,
-                                                    fontWeight:
-                                                        FontWeight.w700)),
-                                            SizedBox(height: 4.0),
-                                            Text(kost.price,
-                                                style: GoogleFonts.lato(
-                                                    color: kDarkGrey,
-                                                    fontWeight:
-                                                        FontWeight.w600))
-                                          ],
-                                        ),
+                                        Text(recentKostStay[index].name,
+                                            style: GoogleFonts.lato(
+                                                color: dBlack,
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.w700)),
+                                        SizedBox(height: 4.0),
+                                        Text(recentKostStay[index].location,
+                                            style: GoogleFonts.lato(
+                                              color: dDarkGrey,
+                                            )),
+                                        SizedBox(height: 4.0),
+                                        Text(recentKostStay[index].price,
+                                            style: GoogleFonts.lato(
+                                                color: dDarkGrey,
+                                                fontWeight: FontWeight.w600))
                                       ],
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                Expanded(
-                                  flex: 1,
-                                  child: IconButton(
-                                      icon: kost.saved == true
-                                          ? Icon(Icons.bookmark, color: kOrange)
-                                          : Icon(Icons.bookmark_border,
-                                              color: kDarkGrey),
-                                      onPressed: () {
-                                        setState(() {
-                                          kost.saved = !kost.saved;
-                                        });
-                                      }),
-                                )
-                              ],
-                            ),
+                              ),
+                              IconButton(
+                                  icon: recentKostStay[index].saved == true
+                                      ? Icon(Icons.bookmark, color: dOrange)
+                                      : Icon(Icons.bookmark_border,
+                                          color: dDarkGrey),
+                                  onPressed: () {
+                                    setState(() {
+                                      recentKostStay[index].saved =
+                                          !recentKostStay[index].saved;
+                                    });
+                                  })
+                            ],
                           ),
-                        );
-                      }).toList()),
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
             )
@@ -336,9 +335,10 @@ var recentKostStay = [
       facilitas: 'AC - WC Dalam',
       mainImage: 'kostJakarta.jpg',
       listImage: [
-        'https://media-cdn.tripadvisor.com/media/photo-s/0d/7c/59/70/farmhouse-lembang.jpg',
-        'https://media-cdn.tripadvisor.com/media/photo-w/13/f0/22/f6/photo3jpg.jpg',
-        'https://media-cdn.tripadvisor.com/media/photo-m/1280/16/a9/33/43/liburan-di-farmhouse.jpg'
+        'detailSatu.jpg',
+        'detailDua.jpg',
+        'detailTiga.jpg',
+        'detailEmpat.jpeg'
       ],
       saved: false),
   KostStay(
@@ -352,9 +352,10 @@ var recentKostStay = [
       facilitas: 'WC Dalam',
       mainImage: 'kostBekasi.jpg',
       listImage: [
-        'https://media-cdn.tripadvisor.com/media/photo-s/0d/7c/59/70/farmhouse-lembang.jpg',
-        'https://media-cdn.tripadvisor.com/media/photo-w/13/f0/22/f6/photo3jpg.jpg',
-        'https://media-cdn.tripadvisor.com/media/photo-m/1280/16/a9/33/43/liburan-di-farmhouse.jpg'
+        'detailSatu.jpg',
+        'detailDua.jpg',
+        'detailTiga.jpg',
+        'detailEmpat.jpeg'
       ],
       saved: false),
   KostStay(
@@ -368,9 +369,10 @@ var recentKostStay = [
       facilitas: 'WC Dalam',
       mainImage: 'kostPekanbaru.jpg',
       listImage: [
-        'https://media-cdn.tripadvisor.com/media/photo-s/0d/7c/59/70/farmhouse-lembang.jpg',
-        'https://media-cdn.tripadvisor.com/media/photo-w/13/f0/22/f6/photo3jpg.jpg',
-        'https://media-cdn.tripadvisor.com/media/photo-m/1280/16/a9/33/43/liburan-di-farmhouse.jpg'
+        'detailSatu.jpg',
+        'detailDua.jpg',
+        'detailTiga.jpg',
+        'detailEmpat.jpeg'
       ],
       saved: false),
 ];
