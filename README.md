@@ -15,17 +15,17 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-**Submission Dicoding Flutter**
+# Submission Dicoding Flutter
 
 
-### Layout LogIn
+## Layout LogIn
 ![Screenshot](https://github.com/disebud/disebudStay/blob/master/screenshoot/1_login.PNG?raw=true)
 ![Screenshot](https://github.com/disebud/disebudStay/blob/master/screenshoot/1_loginS.PNG?raw=true)
 
-### Layout Utama
+## Layout Utama
 ![Screenshot](https://github.com/disebud/disebudStay/blob/master/screenshoot/2_home.PNG?raw=true)
 ![Screenshot](https://github.com/disebud/disebudStay/blob/master/screenshoot/2_homeS.PNG?raw=true)
 
-### Layout Pesan
+## Layout Detail
 ![Screenshot](https://github.com/disebud/disebudStay/blob/master/screenshoot/3_detail.PNG?raw=true)
 ![Screenshot](https://github.com/disebud/disebudStay/blob/master/screenshoot/3_detailS.PNG?raw=true)
